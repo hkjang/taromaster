@@ -9,6 +9,7 @@ import { ShufflePage } from './pages/ShufflePage';
 import { SelectCardPage } from './pages/SelectCardPage';
 import { ReadingPage } from './pages/ReadingPage';
 import { ResultPage } from './pages/ResultPage';
+import { AdminPage } from './pages/AdminPage';
 import './App.css';
 
 function AppContent() {
@@ -43,6 +44,7 @@ function AppContent() {
         <Route path="/select" element={<SelectCardPage />} />
         <Route path="/reading" element={<ReadingPage />} />
         <Route path="/result" element={<ResultPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </div>
   );

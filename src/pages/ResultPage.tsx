@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useReading } from '../hooks/useReading';
 import { useSettings } from '../hooks/useSettings';
 import { useHistory } from '../hooks/useHistory';
+import { useAISettings } from '../hooks/useAISettings';
 import { TarotCard } from '../components/TarotCard';
 import { CardModal } from '../components/CardModal';
 import { DialogBubble } from '../components/DialogBubble';
 import { CandleEffect } from '../components/CandleEffect';
+import { AIAdviceSection } from '../components/AIAdviceSection';
 import { getRandomDialog, closingDialogs } from '../data/masterDialogs';
 import { generateReadingSummary, generatePersonalizedReading } from '../data/interpretations';
 import type { TarotCard as TarotCardType } from '../data/tarotCards';
@@ -17,6 +19,7 @@ export function ResultPage() {
     const { state, reset } = useReading();
     const { settings } = useSettings();
     const { saveReading } = useHistory();
+    const { settings: aiSettings, isAvailable: isAIAvailable } = useAISettings();
 
     const [saved, setSaved] = useState(false);
     const [memo, setMemo] = useState('');
@@ -166,6 +169,15 @@ export function ResultPage() {
                     showAvatar={true}
                 />
             </div>
+
+            {/* AI 추가 조언 */}
+            <AIAdviceSection
+                cards={cards}
+                category={state.category}
+                question={state.question}
+                aiConfig={aiSettings}
+                isAvailable={isAIAvailable}
+            />
 
             {/* 메모 입력 */}
             {showMemoInput && (

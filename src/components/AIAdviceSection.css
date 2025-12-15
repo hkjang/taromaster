@@ -1,0 +1,156 @@
+.ai-advice-section {
+    margin-top: 32px;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    position: relative;
+    animation: fadeInUp 0.6s ease;
+    backdrop-filter: blur(8px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ai-advice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.ai-advice-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-advice-title h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    color: #f8f8f8;
+    font-weight: 600;
+}
+
+.ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 12px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ai-badge::before {
+    content: '✨';
+    font-size: 0.625rem;
+}
+
+.ai-advice-close {
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.ai-advice-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #888;
+}
+
+.ai-advice-content {
+    color: #c8c8d0;
+    font-size: 1rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
+}
+
+.ai-advice-content p {
+    margin: 0;
+}
+
+/* 로딩 상태 */
+.ai-advice-loading {
+    padding: 24px;
+    text-align: center;
+}
+
+.ai-advice-shimmer {
+    height: 16px;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    background-size: 200% 100%;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    animation: shimmer 1.5s infinite;
+}
+
+.ai-advice-shimmer:nth-child(2) {
+    width: 90%;
+}
+
+.ai-advice-shimmer:nth-child(3) {
+    width: 75%;
+}
+
+.ai-advice-shimmer:last-child {
+    margin-bottom: 0;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* 정적 시간 페이드 효과 */
+.ai-advice-section.entering {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* 실천 가능한 문장 하이라이트 */
+.ai-advice-content strong,
+.ai-advice-content em {
+    color: #a78bfa;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+    .ai-advice-section {
+        padding: 20px;
+        margin-top: 24px;
+    }
+
+    .ai-advice-title h3 {
+        font-size: 1rem;
+    }
+
+    .ai-advice-content {
+        font-size: 0.9375rem;
+    }
+}
