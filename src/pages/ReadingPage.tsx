@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useReading } from '../hooks/useReading';
 import { useSettings } from '../hooks/useSettings';
 import { TarotCard } from '../components/TarotCard';
+import { CardModal } from '../components/CardModal';
 import { TarotMaster } from '../components/TarotMaster';
 import { DialogBubble } from '../components/DialogBubble';
 import { CandleEffect } from '../components/CandleEffect';
 import { getRandomDialog, readingStartDialogs, readingTransitionDialogs, silenceDialogs } from '../data/masterDialogs';
 import { generatePersonalizedReading } from '../data/interpretations';
+import type { TarotCard as TarotCardType } from '../data/tarotCards';
 import './ReadingPage.css';
 
 export function ReadingPage() {
@@ -20,6 +22,7 @@ export function ReadingPage() {
     const [currentDialog, setCurrentDialog] = useState('');
     const [isTalking, setIsTalking] = useState(false);
     const [flippedCards, setFlippedCards] = useState<number[]>([]);
+    const [modalCard, setModalCard] = useState<{ card: TarotCardType; isReversed: boolean } | null>(null);
 
     const cards = state.selectedCards;
 
@@ -140,6 +143,7 @@ export function ReadingPage() {
                             isReversed={selected.isReversed}
                             isFlipped={flippedCards.includes(index)}
                             size="medium"
+                            onClick={() => flippedCards.includes(index) && setModalCard({ card: selected.card, isReversed: selected.isReversed })}
                         />
                     </div>
                 ))}
@@ -167,6 +171,16 @@ export function ReadingPage() {
                         조언 받기
                     </button>
                 </div>
+            )}
+
+            {/* 카드 확대 모달 */}
+            {modalCard && (
+                <CardModal
+                    card={modalCard.card}
+                    isReversed={modalCard.isReversed}
+                    isOpen={true}
+                    onClose={() => setModalCard(null)}
+                />
             )}
         </div>
     );

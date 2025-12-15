@@ -1,0 +1,356 @@
+/* ===== 카드 모달 백드롭 ===== */
+.card-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.card-modal-backdrop.entering,
+.card-modal-backdrop.visible {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.card-modal-backdrop.exiting {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+}
+
+/* ===== 모달 컨텐츠 ===== */
+.card-modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* ===== 빛나는 후광 효과 ===== */
+.card-modal-glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(212, 175, 55, 0.3) 0%,
+            rgba(139, 92, 246, 0.2) 40%,
+            transparent 70%);
+    filter: blur(40px);
+    animation: glowPulse 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* ===== 카드 컨테이너 ===== */
+.card-modal-card {
+    width: 280px;
+    height: 466px;
+    perspective: 1000px;
+}
+
+/* ===== 등장 애니메이션 - 뱅글뱅글 회전 ===== */
+.card-modal-content.entering .card-modal-card {
+    animation: spinIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.card-modal-content.visible .card-modal-card {
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+.card-modal-content.exiting .card-modal-card {
+    animation: spinOut 0.3s ease-in forwards;
+}
+
+@keyframes spinIn {
+    0% {
+        transform: scale(0.1) rotateY(0deg) rotateZ(0deg);
+        opacity: 0;
+    }
+
+    30% {
+        transform: scale(0.5) rotateY(360deg) rotateZ(90deg);
+        opacity: 0.7;
+    }
+
+    60% {
+        transform: scale(0.8) rotateY(720deg) rotateZ(180deg);
+        opacity: 0.9;
+    }
+
+    80% {
+        transform: scale(1.05) rotateY(1080deg) rotateZ(355deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotateY(1080deg) rotateZ(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateY(5deg);
+    }
+}
+
+@keyframes spinOut {
+    0% {
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.1) rotateY(-360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== 카드 내부 ===== */
+.card-modal-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    border: 4px solid;
+    border-image: linear-gradient(145deg, #d4af37 0%, #f4e4bc 25%, #d4af37 50%, #b8860b 75%, #d4af37 100%) 1;
+    box-shadow:
+        0 0 40px rgba(212, 175, 55, 0.3),
+        0 0 80px rgba(139, 92, 246, 0.2),
+        0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.card-modal-inner.reversed {
+    transform: rotate(180deg);
+}
+
+/* ===== 카드 이미지 ===== */
+.card-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ===== 이미지 없을 때 플레이스홀더 ===== */
+.card-modal-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.modal-mystical-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-mystical-circle {
+    width: 70%;
+    aspect-ratio: 1;
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.modal-mystical-rays {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 0deg,
+            transparent 0deg,
+            rgba(212, 175, 55, 0.15) 45deg,
+            transparent 90deg,
+            rgba(212, 175, 55, 0.15) 135deg,
+            transparent 180deg,
+            rgba(212, 175, 55, 0.15) 225deg,
+            transparent 270deg,
+            rgba(212, 175, 55, 0.15) 315deg,
+            transparent 360deg);
+    animation: modalRotate 15s linear infinite;
+}
+
+@keyframes modalRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.modal-card-symbol {
+    font-size: 5rem;
+    color: var(--color-gold, #d4af37);
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.8),
+        0 0 40px rgba(212, 175, 55, 0.6);
+    z-index: 1;
+}
+
+/* ===== 카드 정보 ===== */
+.card-modal-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    max-width: 400px;
+    animation: fadeInUp 0.5s ease 0.4s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-modal-number {
+    font-size: 1rem;
+    color: var(--color-gold, #d4af37);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.card-modal-name-kr {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #f5f5f5);
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-modal-name-en {
+    font-size: 1rem;
+    color: var(--color-text-muted, #8b8b8b);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.card-modal-reversed {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1));
+    color: var(--color-accent-purple, #8b5cf6);
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.card-modal-meaning {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary, #c0c0c0);
+    line-height: 1.6;
+    margin: 0.5rem 0 0 0;
+}
+
+/* ===== 닫기 버튼 ===== */
+.card-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color-text-primary, #f5f5f5);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-modal-close:hover {
+    background: rgba(212, 175, 55, 0.3);
+    border-color: var(--color-gold, #d4af37);
+    transform: scale(1.1);
+}
+
+/* ===== 모바일 최적화 ===== */
+@media (max-width: 480px) {
+    .card-modal-card {
+        width: 220px;
+        height: 366px;
+    }
+
+    .card-modal-glow {
+        width: 300px;
+        height: 300px;
+    }
+
+    .card-modal-name-kr {
+        font-size: 1.4rem;
+    }
+
+    .card-modal-name-en {
+        font-size: 0.85rem;
+    }
+
+    .card-modal-meaning {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+
+    .modal-card-symbol {
+        font-size: 4rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .card-modal-card {
+        width: 180px;
+        height: 300px;
+    }
+
+    .card-modal-info {
+        gap: 0.25rem;
+    }
+
+    .card-modal-name-kr {
+        font-size: 1.2rem;
+    }
+}

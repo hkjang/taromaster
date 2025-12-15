@@ -4,10 +4,12 @@ import { useReading } from '../hooks/useReading';
 import { useSettings } from '../hooks/useSettings';
 import { useHistory } from '../hooks/useHistory';
 import { TarotCard } from '../components/TarotCard';
+import { CardModal } from '../components/CardModal';
 import { DialogBubble } from '../components/DialogBubble';
 import { CandleEffect } from '../components/CandleEffect';
 import { getRandomDialog, closingDialogs } from '../data/masterDialogs';
 import { generateReadingSummary, generatePersonalizedReading } from '../data/interpretations';
+import type { TarotCard as TarotCardType } from '../data/tarotCards';
 import './ResultPage.css';
 
 export function ResultPage() {
@@ -19,6 +21,7 @@ export function ResultPage() {
     const [saved, setSaved] = useState(false);
     const [memo, setMemo] = useState('');
     const [showMemoInput, setShowMemoInput] = useState(false);
+    const [modalCard, setModalCard] = useState<{ card: TarotCardType; isReversed: boolean } | null>(null);
 
     const cards = state.selectedCards;
 
@@ -127,6 +130,7 @@ export function ResultPage() {
                                 isReversed={selected.isReversed}
                                 isFlipped={true}
                                 size="small"
+                                onClick={() => setModalCard({ card: selected.card, isReversed: selected.isReversed })}
                             />
                             <div className="card-info">
                                 <span className="card-position">
@@ -215,6 +219,16 @@ export function ResultPage() {
                     🔮 새로운 리딩
                 </button>
             </div>
+
+            {/* 카드 확대 모달 */}
+            {modalCard && (
+                <CardModal
+                    card={modalCard.card}
+                    isReversed={modalCard.isReversed}
+                    isOpen={true}
+                    onClose={() => setModalCard(null)}
+                />
+            )}
         </div>
     );
 }
