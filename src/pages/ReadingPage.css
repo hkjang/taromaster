@@ -1,0 +1,101 @@
+.reading-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-lg);
+    gap: var(--space-lg);
+}
+
+.reading-master {
+    transform: scale(0.6);
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+/* 카드 스프레드 */
+.reading-spread {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: var(--space-md);
+}
+
+.spread-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    transition: all 0.3s ease;
+}
+
+.spread-card-wrapper.current {
+    transform: scale(1.05);
+}
+
+.spread-card-wrapper.current .position-label {
+    color: var(--color-gold);
+}
+
+.position-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* 대화 영역 */
+.reading-dialog {
+    width: 100%;
+    max-width: 600px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    padding: var(--space-md);
+}
+
+.reading-dialog .dialog-container {
+    max-width: 100%;
+}
+
+.reading-dialog .dialog-bubble {
+    max-width: 100%;
+}
+
+/* 완료 버튼 */
+.reading-complete {
+    animation: fadeIn 0.5s ease;
+    margin-top: var(--space-lg);
+}
+
+.reading-complete .btn {
+    padding: var(--space-md) var(--space-2xl);
+    font-size: var(--font-size-lg);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+    .reading-spread {
+        gap: var(--space-md);
+    }
+
+    .spread-card-wrapper {
+        flex: 0 0 calc(50% - var(--space-md));
+    }
+}
+
+@media (max-width: 480px) {
+    .reading-master {
+        transform: scale(0.5);
+    }
+
+    .spread-card-wrapper {
+        flex: 0 0 calc(50% - var(--space-sm));
+    }
+
+    .position-label {
+        font-size: var(--font-size-xs);
+    }
+}

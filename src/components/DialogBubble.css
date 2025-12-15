@@ -1,0 +1,141 @@
+.dialog-container {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    max-width: 90%;
+    animation: slideUp 0.5s ease-out;
+}
+
+.dialog-container.right {
+    flex-direction: row-reverse;
+}
+
+.dialog-avatar {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-card-back);
+    border: 2px solid var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-glow);
+}
+
+.avatar-inner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2), transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-icon {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 10px var(--color-gold);
+}
+
+.dialog-bubble {
+    position: relative;
+    background: var(--color-bg-elevated);
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: var(--space-md) var(--space-lg);
+    max-width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-container.left .dialog-bubble {
+    border-top-left-radius: 4px;
+}
+
+.dialog-container.right .dialog-bubble {
+    border-top-right-radius: 4px;
+}
+
+.bubble-tail {
+    position: absolute;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.dialog-container.left .bubble-tail {
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--color-bg-elevated) transparent transparent;
+}
+
+.dialog-container.right .bubble-tail {
+    right: -10px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--color-bg-elevated);
+}
+
+.bubble-content {
+    position: relative;
+}
+
+.dialog-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: var(--color-gold);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* 모바일 최적화 */
+@media (max-width: 480px) {
+    .dialog-container {
+        max-width: 100%;
+    }
+
+    .dialog-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .avatar-inner {
+        width: 32px;
+        height: 32px;
+    }
+
+    .avatar-icon {
+        font-size: 1.2rem;
+    }
+
+    .dialog-bubble {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .dialog-text {
+        font-size: var(--font-size-sm);
+    }
+}

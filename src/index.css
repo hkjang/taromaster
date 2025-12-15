@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* 다크 테마 색상 팔레트 */
+  --color-bg-deep: #0a0a0f;
+  --color-bg-dark: #121218;
+  --color-bg-card: #1a1a24;
+  --color-bg-elevated: #252532;
+  
+  /* 촛불/골드 색상 */
+  --color-candle: #fbbf24;
+  --color-candle-glow: #f59e0b;
+  --color-gold: #d4af37;
+  --color-gold-light: #f5d875;
+  
+  /* 텍스트 색상 */
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a0a0a8;
+  --color-text-muted: #6b6b75;
+  
+  /* 신비로운 악센트 색상 */
+  --color-accent-purple: #8b5cf6;
+  --color-accent-indigo: #6366f1;
+  --color-accent-blue: #3b82f6;
+  
+  /* 그라디언트 */
+  --gradient-mystical: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f5d875 50%, #d4af37 100%);
+  --gradient-card-back: linear-gradient(145deg, #2d1b4e 0%, #1a1035 50%, #0d0820 100%);
+  
+  /* 그림자 */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(212, 175, 55, 0.3);
+  --shadow-candle: 0 0 60px rgba(251, 191, 36, 0.4);
+  
+  /* 애니메이션 타이밍 */
+  --timing-slow: 1.5s;
+  --timing-normal: 0.6s;
+  --timing-fast: 0.3s;
+  
+  /* 타이포그래피 */
+  --font-serif: 'Noto Serif KR', serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  
+  /* 간격 */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  
+  /* 카드 크기 */
+  --card-width: 120px;
+  --card-height: 200px;
+  --card-border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--gradient-mystical);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-elevated);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* 기본 앱 컨테이너 */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 페이지 전환 애니메이션 */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--timing-normal), transform var(--timing-normal);
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity var(--timing-fast);
+}
+
+/* 촛불 깜빡임 효과 */
+@keyframes candleFlicker {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  25% { opacity: 0.9; filter: brightness(0.95); }
+  50% { opacity: 1; filter: brightness(1.05); }
+  75% { opacity: 0.95; filter: brightness(0.98); }
+}
+
+/* 떠다니는 효과 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 은은한 빛 효과 */
+@keyframes glow {
+  0%, 100% { box-shadow: var(--shadow-glow); }
+  50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
+}
+
+/* 카드 흔들림 효과 */
+@keyframes cardWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-1deg); }
+  75% { transform: rotate(1deg); }
+}
+
+/* 페이드인 효과 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 슬라이드 업 효과 */
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 버튼 기본 스타일 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--timing-fast);
+}
+
+.btn-primary {
+  background: var(--gradient-gold);
+  color: var(--color-bg-deep);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-bg-elevated);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* 카드 뒤집기 3D 효과 */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--card-border-radius);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* 텍스트 타이핑 효과를 위한 커서 */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--color-gold);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 반응형 유틸리티 */
+@media (max-width: 768px) {
+  :root {
+    --card-width: 90px;
+    --card-height: 150px;
+    --font-size-base: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --card-width: 70px;
+    --card-height: 116px;
+    --font-size-base: 0.85rem;
+  }
+}

@@ -1,0 +1,265 @@
+.candle-container {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.candle-container.left {
+    left: 5%;
+    bottom: 15%;
+}
+
+.candle-container.right {
+    right: 5%;
+    bottom: 15%;
+}
+
+.candle-container.center {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+}
+
+.candle-container.small .candle {
+    transform: scale(0.6);
+}
+
+.candle-container.medium .candle {
+    transform: scale(1);
+}
+
+.candle-container.large .candle {
+    transform: scale(1.4);
+}
+
+.candle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candle-body {
+    width: 30px;
+    height: 80px;
+    background: linear-gradient(135deg, #f5e6c8 0%, #dcc9a8 50%, #c4a76e 100%);
+    border-radius: 4px 4px 8px 8px;
+    position: relative;
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.candle-wax {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 8px;
+    background: linear-gradient(135deg, #f8f0e0 0%, #e8d8c0 100%);
+    border-radius: 50%;
+}
+
+.candle-drip {
+    position: absolute;
+    width: 6px;
+    background: linear-gradient(180deg, #f5e6c8 0%, #dcc9a8 100%);
+    border-radius: 0 0 4px 4px;
+}
+
+.drip-1 {
+    left: 2px;
+    top: 10px;
+    height: 25px;
+}
+
+.drip-2 {
+    right: 3px;
+    top: 15px;
+    height: 18px;
+}
+
+.candle-flame-container {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.candle-flame {
+    position: relative;
+    width: 16px;
+    height: 40px;
+    background: linear-gradient(0deg,
+            #fef3c7 0%,
+            #fbbf24 30%,
+            #f97316 60%,
+            #dc2626 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flameFlicker 0.15s infinite alternate;
+    filter: blur(1px);
+}
+
+.flame-inner {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 20px;
+    background: linear-gradient(0deg,
+            #3b82f6 0%,
+            #fef3c7 50%,
+            #fef3c7 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flameFlicker 0.1s infinite alternate-reverse;
+}
+
+.flame-glow {
+    position: absolute;
+    inset: -30px;
+    background: radial-gradient(circle at center,
+            rgba(251, 191, 36, 0.4) 0%,
+            rgba(251, 191, 36, 0.2) 30%,
+            transparent 70%);
+    animation: glowPulse 1s ease-in-out infinite;
+}
+
+@keyframes flameFlicker {
+    0% {
+        transform: translateX(-50%) scaleY(1) scaleX(1);
+    }
+
+    25% {
+        transform: translateX(-48%) scaleY(1.02) scaleX(0.98);
+    }
+
+    50% {
+        transform: translateX(-52%) scaleY(0.98) scaleX(1.02);
+    }
+
+    75% {
+        transform: translateX(-49%) scaleY(1.01) scaleX(0.99);
+    }
+
+    100% {
+        transform: translateX(-51%) scaleY(0.99) scaleX(1.01);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.candle-light-rays {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+}
+
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(251, 191, 36, 0.3), transparent);
+    transform-origin: left center;
+    animation: rayPulse 2s ease-in-out infinite;
+}
+
+.ray-1 {
+    transform: rotate(0deg);
+    animation-delay: 0s;
+}
+
+.ray-2 {
+    transform: rotate(45deg);
+    animation-delay: 0.25s;
+}
+
+.ray-3 {
+    transform: rotate(90deg);
+    animation-delay: 0.5s;
+}
+
+.ray-4 {
+    transform: rotate(135deg);
+    animation-delay: 0.75s;
+}
+
+.ray-5 {
+    transform: rotate(180deg);
+    animation-delay: 1s;
+}
+
+.ray-6 {
+    transform: rotate(225deg);
+    animation-delay: 1.25s;
+}
+
+.ray-7 {
+    transform: rotate(270deg);
+    animation-delay: 1.5s;
+}
+
+.ray-8 {
+    transform: rotate(315deg);
+    animation-delay: 1.75s;
+}
+
+@keyframes rayPulse {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        width: 40px;
+    }
+
+    50% {
+        opacity: 0.4;
+        width: 60px;
+    }
+}
+
+.candle-plate {
+    width: 50px;
+    height: 8px;
+    background: linear-gradient(135deg, #4b5563 0%, #374151 50%, #1f2937 100%);
+    border-radius: 50%;
+    margin-top: -4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.candle-ambient-light {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 100px;
+    background: radial-gradient(ellipse at center,
+            rgba(251, 191, 36, 0.15) 0%,
+            rgba(251, 191, 36, 0.05) 40%,
+            transparent 70%);
+    pointer-events: none;
+}
+
+/* 모바일에서는 촛불 숨김 */
+@media (max-width: 768px) {
+    .candle-container {
+        display: none;
+    }
+}

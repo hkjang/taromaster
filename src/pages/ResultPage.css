@@ -1,0 +1,199 @@
+.result-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-xl);
+    padding-bottom: 100px;
+    gap: var(--space-xl);
+}
+
+/* 헤더 */
+.result-header {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-header h1 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-gold);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    margin-bottom: var(--space-sm);
+}
+
+.result-date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+/* 핵심 메시지 */
+.core-message {
+    width: 100%;
+    max-width: 500px;
+    animation: slideUp 0.5s ease 0.2s backwards;
+}
+
+.core-message .dialog-bubble {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--color-gold);
+}
+
+/* 카드 요약 */
+.cards-summary {
+    width: 100%;
+    max-width: 600px;
+    animation: slideUp 0.5s ease 0.4s backwards;
+}
+
+.cards-summary h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.summary-cards {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+    max-width: 120px;
+}
+
+.card-position {
+    font-size: var(--font-size-xs);
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.card-meaning {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* 행동 가이드 */
+.action-guide {
+    width: 100%;
+    max-width: 500px;
+    animation: slideUp 0.5s ease 0.6s backwards;
+}
+
+.action-guide h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.advice-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.advice-item {
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    padding: var(--space-md);
+    border-left: 3px solid var(--color-gold);
+}
+
+.advice-card {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    color: var(--color-gold);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.advice-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 마무리 인사 */
+.closing-message {
+    width: 100%;
+    max-width: 500px;
+    animation: slideUp 0.5s ease 0.8s backwards;
+}
+
+/* 메모 입력 */
+.memo-section {
+    width: 100%;
+    max-width: 500px;
+    animation: slideUp 0.3s ease;
+}
+
+.memo-input {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-bg-elevated);
+    border-radius: 12px;
+    color: var(--color-text-primary);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    resize: none;
+}
+
+.memo-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+/* 액션 버튼 */
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+    animation: fadeIn 0.5s ease 1s backwards;
+}
+
+.result-actions .btn {
+    min-width: 120px;
+}
+
+.saved-message {
+    color: var(--color-gold);
+    font-size: var(--font-size-sm);
+    animation: fadeIn 0.3s ease;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 480px) {
+    .result-header h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    .summary-cards {
+        gap: var(--space-md);
+    }
+
+    .result-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .result-actions .btn {
+        width: 100%;
+    }
+}

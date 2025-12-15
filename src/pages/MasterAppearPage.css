@@ -1,0 +1,64 @@
+.master-appear-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    gap: var(--space-xl);
+}
+
+.master-container {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+    transition: all 1s ease;
+}
+
+.master-container.appearing {
+    opacity: 0;
+}
+
+.master-container.greeting,
+.master-container.reacting,
+.master-container.ready {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.dialog-area {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.hint-area {
+    position: absolute;
+    bottom: 10%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.hint-area.visible {
+    opacity: 1;
+}
+
+.hint-area p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
