@@ -257,119 +257,294 @@ export const majorArcana: TarotCard[] = [
     }
 ];
 
-// 마이너 아르카나 (완두 슈트 예시 - 나머지는 유사 패턴)
+// 마이너 아르카나 56장 (4수트 x 14장)
 export const minorArcana: TarotCard[] = [
-    // Wands (지팡이)
+    // ===== WANDS (지팡이) - 불, 열정, 창조, 행동 =====
     {
-        id: 22,
-        name: "Ace of Wands",
-        nameKr: "지팡이 에이스",
-        arcana: "minor",
-        suit: "wands",
-        upright: "새로운 시작, 영감, 잠재력",
-        reversed: "지연, 좌절, 창의력 막힘",
-        description: "창조적 에너지의 불꽃이 피어오릅니다. 새로운 열정이 시작됩니다.",
-        advice: "이 불꽃을 소중히 키우세요. 당신의 열정이 세상을 바꿀 수 있습니다.",
-        image: "/cards/22.png"
+        id: 22, name: "Ace of Wands", nameKr: "지팡이 에이스", arcana: "minor", suit: "wands",
+        upright: "새로운 시작, 영감, 잠재력", reversed: "지연, 좌절, 창의력 막힘",
+        description: "창조적 에너지의 불꽃이 피어오릅니다.", advice: "열정을 따라 새로운 도전을 시작하세요.", image: "/cards/22.png"
     },
     {
-        id: 23,
-        name: "Two of Wands",
-        nameKr: "지팡이 2",
-        arcana: "minor",
-        suit: "wands",
-        upright: "계획, 미래 비전, 결정",
-        reversed: "두려움, 망설임, 계획 부재",
-        description: "세상은 넓고 가능성은 무한합니다. 어디로 나아갈지 선택할 시간입니다.",
-        advice: "큰 그림을 그리세요. 담대한 계획이 담대한 결과를 만듭니다.",
-        image: "/cards/23.png"
+        id: 23, name: "Two of Wands", nameKr: "지팡이 2", arcana: "minor", suit: "wands",
+        upright: "계획, 미래 비전, 결정", reversed: "두려움, 망설임, 계획 부재",
+        description: "세상은 넓고 가능성은 무한합니다.", advice: "담대한 계획을 세우세요.", image: "/cards/23.png"
     },
     {
-        id: 24,
-        name: "Three of Wands",
-        nameKr: "지팡이 3",
-        arcana: "minor",
-        suit: "wands",
-        upright: "확장, 선견지명, 성장",
-        reversed: "장애물, 지연, 좌절",
-        description: "당신이 뿌린 씨앗이 자라고 있습니다. 곧 결실을 볼 수 있을 것입니다.",
-        advice: "인내심을 가지세요. 노력의 결과가 곧 보이기 시작할 것입니다.",
-        image: "/cards/24.png"
-    },
-    // Cups (컵)
-    {
-        id: 36,
-        name: "Ace of Cups",
-        nameKr: "컵 에이스",
-        arcana: "minor",
-        suit: "cups",
-        upright: "새로운 감정, 사랑, 축복",
-        reversed: "감정 억압, 공허함, 상처",
-        description: "마음이 열리고 사랑이 흘러넘칩니다. 감정의 새로운 시작입니다.",
-        advice: "마음을 열어 사랑을 받아들이세요. 당신은 사랑받을 자격이 있습니다.",
-        image: "/cards/36.png"
+        id: 24, name: "Three of Wands", nameKr: "지팡이 3", arcana: "minor", suit: "wands",
+        upright: "확장, 선견지명, 성장", reversed: "장애물, 지연, 좌절",
+        description: "씨앗이 자라고 있습니다.", advice: "인내심을 가지고 기다리세요.", image: "/cards/24.png"
     },
     {
-        id: 37,
-        name: "Two of Cups",
-        nameKr: "컵 2",
-        arcana: "minor",
-        suit: "cups",
-        upright: "파트너십, 사랑, 연결",
-        reversed: "불균형, 갈등, 단절",
-        description: "두 마음이 하나로 연결됩니다. 진정한 파트너십의 시작입니다.",
-        advice: "서로의 차이를 존중하며 함께 성장하세요. 사랑은 나눔입니다.",
-        image: "/cards/37.png"
-    },
-    // Swords (검)
-    {
-        id: 50,
-        name: "Ace of Swords",
-        nameKr: "검 에이스",
-        arcana: "minor",
-        suit: "swords",
-        upright: "명확함, 진실, 새로운 생각",
-        reversed: "혼란, 잔인함, 불의",
-        description: "진실의 검이 빛납니다. 명확한 통찰력으로 문제를 해결할 때입니다.",
-        advice: "진실 앞에 담대해지세요. 명확한 판단이 승리를 가져옵니다.",
-        image: "/cards/50.png"
+        id: 25, name: "Four of Wands", nameKr: "지팡이 4", arcana: "minor", suit: "wands",
+        upright: "축하, 조화, 고향", reversed: "갈등, 불화, 불안정",
+        description: "기쁨과 축제의 시간입니다.", advice: "성취를 축하하고 사랑하는 이들과 나누세요.", image: "/cards/25.png"
     },
     {
-        id: 51,
-        name: "Three of Swords",
-        nameKr: "검 3",
-        arcana: "minor",
-        suit: "swords",
-        upright: "슬픔, 상실, 이별",
-        reversed: "치유, 용서, 극복",
-        description: "마음에 상처가 있습니다. 하지만 이 아픔도 지나갈 것입니다.",
-        advice: "슬픔을 피하지 마세요. 충분히 아파야 진정으로 치유될 수 있습니다.",
-        image: "/cards/51.png"
-    },
-    // Pentacles (동전)
-    {
-        id: 64,
-        name: "Ace of Pentacles",
-        nameKr: "동전 에이스",
-        arcana: "minor",
-        suit: "pentacles",
-        upright: "새로운 기회, 번영, 안정",
-        reversed: "기회 상실, 재정 문제, 부주의",
-        description: "물질적 풍요의 씨앗이 주어졌습니다. 잘 키워서 큰 나무로 만드세요.",
-        advice: "기회를 잡으세요. 작은 시작이 큰 성장으로 이어질 수 있습니다.",
-        image: "/cards/64.png"
+        id: 26, name: "Five of Wands", nameKr: "지팡이 5", arcana: "minor", suit: "wands",
+        upright: "경쟁, 갈등, 다툼", reversed: "충돌 회피, 타협, 해결",
+        description: "경쟁과 도전이 있습니다.", advice: "건강한 경쟁을 통해 성장하세요.", image: "/cards/26.png"
     },
     {
-        id: 65,
-        name: "Ten of Pentacles",
-        nameKr: "동전 10",
-        arcana: "minor",
-        suit: "pentacles",
-        upright: "부, 유산, 가족의 안정",
-        reversed: "재정 손실, 가족 갈등, 불안정",
-        description: "풍요와 안정이 가득합니다. 당신이 쌓아온 것들이 결실을 맺었습니다.",
-        advice: "이룬 것에 감사하세요. 그리고 다음 세대를 위해 지혜를 나누세요.",
-        image: "/cards/65.png"
+        id: 27, name: "Six of Wands", nameKr: "지팡이 6", arcana: "minor", suit: "wands",
+        upright: "승리, 인정, 성공", reversed: "자만, 실패, 명예 실추",
+        description: "승리의 영광이 당신을 기다립니다.", advice: "자신감을 갖되 겸손을 잃지 마세요.", image: "/cards/27.png"
+    },
+    {
+        id: 28, name: "Seven of Wands", nameKr: "지팡이 7", arcana: "minor", suit: "wands",
+        upright: "도전, 방어, 결의", reversed: "압도당함, 포기, 약함",
+        description: "당신의 입장을 지켜야 합니다.", advice: "물러서지 말고 당당히 맞서세요.", image: "/cards/28.png"
+    },
+    {
+        id: 29, name: "Eight of Wands", nameKr: "지팡이 8", arcana: "minor", suit: "wands",
+        upright: "빠른 행동, 진전, 변화", reversed: "지연, 좌절, 저항",
+        description: "모든 것이 빠르게 움직입니다.", advice: "기회를 놓치지 말고 빠르게 행동하세요.", image: "/cards/29.png"
+    },
+    {
+        id: 30, name: "Nine of Wands", nameKr: "지팡이 9", arcana: "minor", suit: "wands",
+        upright: "끈기, 용기, 최후의 도전", reversed: "피로, 포기 직전, 의심",
+        description: "지치셨군요, 하지만 거의 다 왔습니다.", advice: "마지막까지 포기하지 마세요.", image: "/cards/30.png"
+    },
+    {
+        id: 31, name: "Ten of Wands", nameKr: "지팡이 10", arcana: "minor", suit: "wands",
+        upright: "부담, 책임, 과중한 짐", reversed: "짐 내려놓기, 해방, 위임",
+        description: "너무 많은 짐을 지고 있습니다.", advice: "도움을 요청하고 짐을 나누세요.", image: "/cards/31.png"
+    },
+    {
+        id: 32, name: "Page of Wands", nameKr: "지팡이 시종", arcana: "minor", suit: "wands",
+        upright: "열정, 모험, 발견", reversed: "방향 상실, 미성숙, 좌절",
+        description: "새로운 모험이 시작됩니다.", advice: "호기심을 따라 탐험하세요.", image: "/cards/32.png"
+    },
+    {
+        id: 33, name: "Knight of Wands", nameKr: "지팡이 기사", arcana: "minor", suit: "wands",
+        upright: "에너지, 열정, 모험심", reversed: "무모함, 분노, 지연",
+        description: "열정적으로 앞으로 돌진합니다.", advice: "열정을 가지되 무모하지 마세요.", image: "/cards/33.png"
+    },
+    {
+        id: 34, name: "Queen of Wands", nameKr: "지팡이 여왕", arcana: "minor", suit: "wands",
+        upright: "자신감, 독립, 카리스마", reversed: "자기 의심, 질투, 이기심",
+        description: "당당하고 매력적인 에너지입니다.", advice: "자신감을 갖고 리더십을 발휘하세요.", image: "/cards/34.png"
+    },
+    {
+        id: 35, name: "King of Wands", nameKr: "지팡이 왕", arcana: "minor", suit: "wands",
+        upright: "리더십, 비전, 기업가 정신", reversed: "독재, 무모함, 과도한 기대",
+        description: "비전을 가진 리더입니다.", advice: "담대한 비전으로 다른 이들을 이끄세요.", image: "/cards/35.png"
+    },
+
+    // ===== CUPS (컵) - 물, 감정, 사랑, 관계 =====
+    {
+        id: 36, name: "Ace of Cups", nameKr: "컵 에이스", arcana: "minor", suit: "cups",
+        upright: "새로운 감정, 사랑, 축복", reversed: "감정 억압, 공허함, 상처",
+        description: "사랑이 흘러넘칩니다.", advice: "마음을 열어 사랑을 받아들이세요.", image: "/cards/36.png"
+    },
+    {
+        id: 37, name: "Two of Cups", nameKr: "컵 2", arcana: "minor", suit: "cups",
+        upright: "파트너십, 사랑, 연결", reversed: "불균형, 갈등, 단절",
+        description: "두 마음이 하나로 연결됩니다.", advice: "진정한 파트너십을 추구하세요.", image: "/cards/37.png"
+    },
+    {
+        id: 38, name: "Three of Cups", nameKr: "컵 3", arcana: "minor", suit: "cups",
+        upright: "축하, 우정, 기쁨", reversed: "과음, 소문, 삼각관계",
+        description: "친구들과 함께하는 기쁨입니다.", advice: "소중한 관계를 축하하세요.", image: "/cards/38.png"
+    },
+    {
+        id: 39, name: "Four of Cups", nameKr: "컵 4", arcana: "minor", suit: "cups",
+        upright: "무관심, 명상, 재고", reversed: "동기 부여, 새로운 기회, 인식",
+        description: "무언가를 놓치고 있지 않나요?", advice: "새로운 가능성에 눈을 떠보세요.", image: "/cards/39.png"
+    },
+    {
+        id: 40, name: "Five of Cups", nameKr: "컵 5", arcana: "minor", suit: "cups",
+        upright: "상실, 후회, 슬픔", reversed: "수용, 전진, 용서",
+        description: "상실의 아픔이 있습니다.", advice: "남은 것에 감사하고 앞으로 나아가세요.", image: "/cards/40.png"
+    },
+    {
+        id: 41, name: "Six of Cups", nameKr: "컵 6", arcana: "minor", suit: "cups",
+        upright: "향수, 추억, 순수함", reversed: "과거에 갇힘, 현실 무시, 미성숙",
+        description: "아름다운 추억이 떠오릅니다.", advice: "순수한 마음을 되찾으세요.", image: "/cards/41.png"
+    },
+    {
+        id: 42, name: "Seven of Cups", nameKr: "컵 7", arcana: "minor", suit: "cups",
+        upright: "환상, 선택, 백일몽", reversed: "현실 직시, 명확성, 결정",
+        description: "너무 많은 선택지가 있군요.", advice: "환상과 현실을 구분하세요.", image: "/cards/42.png"
+    },
+    {
+        id: 43, name: "Eight of Cups", nameKr: "컵 8", arcana: "minor", suit: "cups",
+        upright: "포기, 떠남, 더 깊은 탐색", reversed: "표류, 두려움, 미련",
+        description: "무언가를 떠나야 할 때입니다.", advice: "용기를 내어 새로운 길을 찾으세요.", image: "/cards/43.png"
+    },
+    {
+        id: 44, name: "Nine of Cups", nameKr: "컵 9", arcana: "minor", suit: "cups",
+        upright: "만족, 소원 성취, 행복", reversed: "불만족, 탐욕, 허영",
+        description: "소원이 이루어지는 카드입니다.", advice: "현재의 축복에 감사하세요.", image: "/cards/44.png"
+    },
+    {
+        id: 45, name: "Ten of Cups", nameKr: "컵 10", arcana: "minor", suit: "cups",
+        upright: "행복, 조화, 가족", reversed: "불화, 깨진 가정, 갈등",
+        description: "가족의 행복이 가득합니다.", advice: "사랑하는 이들과 함께하세요.", image: "/cards/45.png"
+    },
+    {
+        id: 46, name: "Page of Cups", nameKr: "컵 시종", arcana: "minor", suit: "cups",
+        upright: "창의성, 직관, 감성", reversed: "감정 미성숙, 공상, 불안정",
+        description: "감성적인 새로운 시작입니다.", advice: "직관을 믿고 창의성을 발휘하세요.", image: "/cards/46.png"
+    },
+    {
+        id: 47, name: "Knight of Cups", nameKr: "컵 기사", arcana: "minor", suit: "cups",
+        upright: "로맨스, 매력, 상상력", reversed: "환멸, 변덕, 비현실적",
+        description: "로맨틱한 에너지가 다가옵니다.", advice: "마음을 따르되 현실도 고려하세요.", image: "/cards/47.png"
+    },
+    {
+        id: 48, name: "Queen of Cups", nameKr: "컵 여왕", arcana: "minor", suit: "cups",
+        upright: "공감, 돌봄, 감성", reversed: "의존적, 감정적, 불안정",
+        description: "깊은 공감과 사랑의 에너지입니다.", advice: "자신과 타인을 돌보세요.", image: "/cards/48.png"
+    },
+    {
+        id: 49, name: "King of Cups", nameKr: "컵 왕", arcana: "minor", suit: "cups",
+        upright: "감정 균형, 외교, 자비", reversed: "감정 억압, 조종, 무관심",
+        description: "감정의 달인입니다.", advice: "마음과 머리의 균형을 유지하세요.", image: "/cards/49.png"
+    },
+
+    // ===== SWORDS (검) - 공기, 지성, 진실, 갈등 =====
+    {
+        id: 50, name: "Ace of Swords", nameKr: "검 에이스", arcana: "minor", suit: "swords",
+        upright: "명확함, 진실, 새로운 생각", reversed: "혼란, 잔인함, 불의",
+        description: "진실의 검이 빛납니다.", advice: "명확한 판단으로 문제를 해결하세요.", image: "/cards/50.png"
+    },
+    {
+        id: 51, name: "Two of Swords", nameKr: "검 2", arcana: "minor", suit: "swords",
+        upright: "결정 어려움, 막다른 길, 균형", reversed: "우유부단, 혼란, 정보 과부하",
+        description: "결정을 내려야 합니다.", advice: "눈을 감고 내면의 답을 찾으세요.", image: "/cards/51.png"
+    },
+    {
+        id: 52, name: "Three of Swords", nameKr: "검 3", arcana: "minor", suit: "swords",
+        upright: "슬픔, 상실, 이별", reversed: "치유, 용서, 극복",
+        description: "마음에 상처가 있습니다.", advice: "충분히 아파야 치유됩니다.", image: "/cards/52.png"
+    },
+    {
+        id: 53, name: "Four of Swords", nameKr: "검 4", arcana: "minor", suit: "swords",
+        upright: "휴식, 회복, 명상", reversed: "불안, 소진, 서두름",
+        description: "쉬어야 할 때입니다.", advice: "재충전의 시간을 가지세요.", image: "/cards/53.png"
+    },
+    {
+        id: 54, name: "Five of Swords", nameKr: "검 5", arcana: "minor", suit: "swords",
+        upright: "갈등, 패배, 승리의 허망함", reversed: "화해, 용서, 과거 청산",
+        description: "승리했지만 공허합니다.", advice: "진정한 승리가 무엇인지 생각하세요.", image: "/cards/54.png"
+    },
+    {
+        id: 55, name: "Six of Swords", nameKr: "검 6", arcana: "minor", suit: "swords",
+        upright: "전환, 치유 여정, 앞으로 나아감", reversed: "저항, 미해결 문제, 정체",
+        description: "어려움을 뒤로하고 떠납니다.", advice: "더 나은 곳으로 나아가세요.", image: "/cards/55.png"
+    },
+    {
+        id: 56, name: "Seven of Swords", nameKr: "검 7", arcana: "minor", suit: "swords",
+        upright: "속임, 전략, 은밀함", reversed: "고백, 양심, 진실 드러남",
+        description: "무언가 숨기고 있지 않나요?", advice: "정직한 길을 선택하세요.", image: "/cards/56.png"
+    },
+    {
+        id: 57, name: "Eight of Swords", nameKr: "검 8", arcana: "minor", suit: "swords",
+        upright: "속박, 제한, 무력감", reversed: "해방, 새로운 관점, 자유",
+        description: "갇혀있다 느끼지만 출구가 있습니다.", advice: "눈을 뜨면 벗어날 수 있습니다.", image: "/cards/57.png"
+    },
+    {
+        id: 58, name: "Nine of Swords", nameKr: "검 9", arcana: "minor", suit: "swords",
+        upright: "불안, 악몽, 걱정", reversed: "희망, 회복, 도움 요청",
+        description: "밤의 공포가 찾아옵니다.", advice: "두려움을 나누면 가벼워집니다.", image: "/cards/58.png"
+    },
+    {
+        id: 59, name: "Ten of Swords", nameKr: "검 10", arcana: "minor", suit: "swords",
+        upright: "끝, 패배, 바닥", reversed: "재기, 회복, 최악의 끝",
+        description: "더 이상 나빠질 수 없습니다.", advice: "바닥을 찍으면 올라갈 일만 남습니다.", image: "/cards/59.png"
+    },
+    {
+        id: 60, name: "Page of Swords", nameKr: "검 시종", arcana: "minor", suit: "swords",
+        upright: "호기심, 정신적 에너지, 새로운 아이디어", reversed: "험담, 속임, 냉소",
+        description: "날카로운 지성이 깨어납니다.", advice: "배움에 열정을 쏟으세요.", image: "/cards/60.png"
+    },
+    {
+        id: 61, name: "Knight of Swords", nameKr: "검 기사", arcana: "minor", suit: "swords",
+        upright: "야망, 행동, 결단력", reversed: "무모함, 공격성, 조급함",
+        description: "빠르고 단호하게 행동합니다.", advice: "용감하되 신중하게 행동하세요.", image: "/cards/61.png"
+    },
+    {
+        id: 62, name: "Queen of Swords", nameKr: "검 여왕", arcana: "minor", suit: "swords",
+        upright: "명석함, 독립, 직설적", reversed: "냉정함, 잔인함, 고립",
+        description: "진실을 꿰뚫어 봅니다.", advice: "감정보다 이성으로 판단하세요.", image: "/cards/62.png"
+    },
+    {
+        id: 63, name: "King of Swords", nameKr: "검 왕", arcana: "minor", suit: "swords",
+        upright: "지적 권위, 진실, 윤리", reversed: "폭정, 냉혹함, 권력 남용",
+        description: "지혜로운 판단을 내립니다.", advice: "공정하고 진실되게 행동하세요.", image: "/cards/63.png"
+    },
+
+    // ===== PENTACLES (동전) - 땅, 물질, 건강, 일 =====
+    {
+        id: 64, name: "Ace of Pentacles", nameKr: "동전 에이스", arcana: "minor", suit: "pentacles",
+        upright: "새로운 기회, 번영, 안정", reversed: "기회 상실, 재정 문제, 부주의",
+        description: "물질적 풍요의 씨앗입니다.", advice: "기회를 잡아 성장시키세요.", image: "/cards/64.png"
+    },
+    {
+        id: 65, name: "Two of Pentacles", nameKr: "동전 2", arcana: "minor", suit: "pentacles",
+        upright: "균형, 적응, 시간 관리", reversed: "불균형, 과부하, 무질서",
+        description: "여러 일을 저글링하고 있군요.", advice: "유연하게 균형을 유지하세요.", image: "/cards/65.png"
+    },
+    {
+        id: 66, name: "Three of Pentacles", nameKr: "동전 3", arcana: "minor", suit: "pentacles",
+        upright: "팀워크, 협력, 장인정신", reversed: "갈등, 경쟁, 형편없는 작업",
+        description: "협력이 훌륭한 결과를 만듭니다.", advice: "팀과 함께 일하세요.", image: "/cards/66.png"
+    },
+    {
+        id: 67, name: "Four of Pentacles", nameKr: "동전 4", arcana: "minor", suit: "pentacles",
+        upright: "안정, 절약, 보수성", reversed: "탐욕, 물질주의, 인색함",
+        description: "소유에 집착하고 있지 않나요?", advice: "나눔의 기쁨을 알아가세요.", image: "/cards/67.png"
+    },
+    {
+        id: 68, name: "Five of Pentacles", nameKr: "동전 5", arcana: "minor", suit: "pentacles",
+        upright: "어려움, 가난, 고립", reversed: "회복, 도움, 긍정적 변화",
+        description: "힘든 시기를 지나고 있습니다.", advice: "도움을 요청하면 받을 수 있습니다.", image: "/cards/68.png"
+    },
+    {
+        id: 69, name: "Six of Pentacles", nameKr: "동전 6", arcana: "minor", suit: "pentacles",
+        upright: "관대함, 나눔, 공정함", reversed: "빚, 불공정, 이기심",
+        description: "주고받음의 균형입니다.", advice: "베풀 수 있을 때 베푸세요.", image: "/cards/69.png"
+    },
+    {
+        id: 70, name: "Seven of Pentacles", nameKr: "동전 7", arcana: "minor", suit: "pentacles",
+        upright: "인내, 투자, 장기적 관점", reversed: "조바심, 실망, 좌절",
+        description: "씨앗이 자라는 것을 기다립니다.", advice: "인내하며 결실을 기다리세요.", image: "/cards/70.png"
+    },
+    {
+        id: 71, name: "Eight of Pentacles", nameKr: "동전 8", arcana: "minor", suit: "pentacles",
+        upright: "장인정신, 노력, 숙달", reversed: "서두름, 게으름, 완벽주의",
+        description: "기술을 갈고닦는 중입니다.", advice: "꾸준한 노력이 실력을 만듭니다.", image: "/cards/71.png"
+    },
+    {
+        id: 72, name: "Nine of Pentacles", nameKr: "동전 9", arcana: "minor", suit: "pentacles",
+        upright: "풍요, 자립, 세련됨", reversed: "과시, 위험한 투자, 고독",
+        description: "노력의 결실을 누리고 있습니다.", advice: "이룬 것을 즐기세요.", image: "/cards/72.png"
+    },
+    {
+        id: 73, name: "Ten of Pentacles", nameKr: "동전 10", arcana: "minor", suit: "pentacles",
+        upright: "부, 유산, 가족의 안정", reversed: "재정 손실, 가족 갈등, 불안정",
+        description: "대대로 전해지는 풍요입니다.", advice: "다음 세대를 위해 지혜를 나누세요.", image: "/cards/73.png"
+    },
+    {
+        id: 74, name: "Page of Pentacles", nameKr: "동전 시종", arcana: "minor", suit: "pentacles",
+        upright: "야망, 근면, 새로운 기회", reversed: "게으름, 비현실적 목표, 방향 상실",
+        description: "실용적인 꿈을 시작합니다.", advice: "작은 것부터 차근차근 시작하세요.", image: "/cards/74.png"
+    },
+    {
+        id: 75, name: "Knight of Pentacles", nameKr: "동전 기사", arcana: "minor", suit: "pentacles",
+        upright: "효율, 일상, 책임감", reversed: "무기력, 완고함, 지루함",
+        description: "묵묵히 나아가는 에너지입니다.", advice: "꾸준함이 성공의 비결입니다.", image: "/cards/75.png"
+    },
+    {
+        id: 76, name: "Queen of Pentacles", nameKr: "동전 여왕", arcana: "minor", suit: "pentacles",
+        upright: "풍요, 실용적 돌봄, 안정", reversed: "일과 삶 불균형, 질투, 인색함",
+        description: "풍요로운 돌봄의 에너지입니다.", advice: "자신과 가족을 잘 돌보세요.", image: "/cards/76.png"
+    },
+    {
+        id: 77, name: "King of Pentacles", nameKr: "동전 왕", arcana: "minor", suit: "pentacles",
+        upright: "풍요, 안정, 리더십", reversed: "탐욕, 물질주의, 완고함",
+        description: "부와 안정의 성취입니다.", advice: "현명하게 재산을 관리하세요.", image: "/cards/77.png"
     }
 ];
 
