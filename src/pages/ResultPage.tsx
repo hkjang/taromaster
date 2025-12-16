@@ -10,6 +10,7 @@ import { CardModal } from '../components/CardModal';
 import { DialogBubble } from '../components/DialogBubble';
 import { CandleEffect } from '../components/CandleEffect';
 import { AIAdviceSection } from '../components/AIAdviceSection';
+import { TipPayment } from '../components/TipPayment';
 import { getRandomDialog, closingDialogs } from '../data/masterDialogs';
 import { generateReadingSummary, generatePersonalizedReading } from '../data/interpretations';
 import type { TarotCard as TarotCardType } from '../data/tarotCards';
@@ -292,6 +293,9 @@ export function ResultPage() {
                 aiConfig={aiSettings}
                 isAvailable={isAIAvailable}
             />
+
+            {/* 복채 (팁) */}
+            <TipPayment />
 
             {/* 메모 입력 */}
             {showMemoInput && (
