@@ -10,6 +10,7 @@ import { SelectCardPage } from './pages/SelectCardPage';
 import { ReadingPage } from './pages/ReadingPage';
 import { ResultPage } from './pages/ResultPage';
 import { AdminPage } from './pages/AdminPage';
+import { TestResultPage } from './pages/TestResultPage';
 import './App.css';
 
 function AppContent() {
@@ -45,6 +46,7 @@ function AppContent() {
         <Route path="/reading" element={<ReadingPage />} />
         <Route path="/result" element={<ResultPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/test-result" element={<TestResultPage />} />
       </Routes>
     </div>
   );

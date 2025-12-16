@@ -6,7 +6,7 @@ import { CardDeck } from '../components/CardDeck';
 import { DialogBubble } from '../components/DialogBubble';
 import { CandleEffect } from '../components/CandleEffect';
 import type { TarotCard as TarotCardType } from '../data/tarotCards';
-import { tarotDeck } from '../data/tarotCards';
+import { tarotDeck, majorArcana } from '../data/tarotCards';
 import { getRandomDialog, selectDialogs } from '../data/masterDialogs';
 import './SelectCardPage.css';
 
@@ -20,6 +20,10 @@ export function SelectCardPage() {
 
     const maxCards = state.spread?.cardCount || 3;
     const dialog = getRandomDialog(selectDialogs, settings.masterStyle);
+
+    // 1장 또는 3장 스프레드는 메이저 아르카나만 사용
+    const useMajorOnly = maxCards <= 3;
+    const deckToUse = useMajorOnly ? majorArcana : tarotDeck;
 
     // 망설임 감지 - 10초 후 카드 흔들림
     useEffect(() => {
@@ -36,8 +40,8 @@ export function SelectCardPage() {
         // 이미 선택된 카드인지 확인
         if (selectedCards.find(c => c.id === card.id)) return;
 
-        // 랜덤으로 다른 카드 선택 (실제로는 UI에서 선택한 것처럼 보이게)
-        const availableCards = tarotDeck.filter(c => !selectedCards.find(s => s.id === c.id));
+        // 사용할 덱에서 랜덤 카드 선택
+        const availableCards = deckToUse.filter(c => !selectedCards.find(s => s.id === c.id));
         const randomCard = availableCards[Math.floor(Math.random() * availableCards.length)];
 
         setSelectedCards(prev => [...prev, randomCard]);

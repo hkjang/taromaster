@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import html2canvas from 'html2canvas';
 import { useReading } from '../hooks/useReading';
 import { useSettings } from '../hooks/useSettings';
 import { useHistory } from '../hooks/useHistory';
@@ -25,6 +26,8 @@ export function ResultPage() {
     const [memo, setMemo] = useState('');
     const [showMemoInput, setShowMemoInput] = useState(false);
     const [modalCard, setModalCard] = useState<{ card: TarotCardType; isReversed: boolean } | null>(null);
+    const [isSaving, setIsSaving] = useState(false);
+    const resultRef = useRef<HTMLDivElement>(null);
 
     const cards = state.selectedCards;
 
@@ -97,8 +100,119 @@ export function ResultPage() {
         }
     };
 
+    const handleSaveAsImage = async () => {
+        if (!resultRef.current || isSaving) return;
+
+        setIsSaving(true);
+        try {
+            // 1. 임시 컨테이너 생성 (화면 밖에 배치)
+            const tempContainer = document.createElement('div');
+            tempContainer.style.cssText = `
+                position: absolute;
+                left: -9999px;
+                top: 0;
+                width: ${resultRef.current.scrollWidth}px;
+                background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #0d0d1a 100%);
+                padding: 32px;
+                font-family: 'Noto Serif KR', serif;
+                color: #f5f5f5;
+            `;
+            document.body.appendChild(tempContainer);
+
+            // 2. 결과 페이지 내용 복제
+            const clone = resultRef.current.cloneNode(true) as HTMLElement;
+
+            // 3. 모든 요소에 computed style 적용 (먼저 스타일 적용 후 요소 제거)
+            const applyStyles = (original: Element, cloned: Element) => {
+                if (original instanceof HTMLElement && cloned instanceof HTMLElement) {
+                    const computed = window.getComputedStyle(original);
+                    cloned.style.cssText = `
+                        color: ${computed.color};
+                        background: ${computed.background};
+                        background-color: ${computed.backgroundColor};
+                        font-family: ${computed.fontFamily};
+                        font-size: ${computed.fontSize};
+                        font-weight: ${computed.fontWeight};
+                        line-height: ${computed.lineHeight};
+                        padding: ${computed.padding};
+                        margin: ${computed.margin};
+                        border: ${computed.border};
+                        border-left: ${computed.borderLeft};
+                        border-radius: ${computed.borderRadius};
+                        box-shadow: ${computed.boxShadow};
+                        text-shadow: ${computed.textShadow};
+                        display: ${computed.display};
+                        flex-direction: ${computed.flexDirection};
+                        align-items: ${computed.alignItems};
+                        justify-content: ${computed.justifyContent};
+                        flex-wrap: ${computed.flexWrap};
+                        gap: ${computed.gap};
+                        width: ${computed.width};
+                        height: ${computed.height};
+                        max-width: ${computed.maxWidth};
+                        text-align: ${computed.textAlign};
+                        white-space: ${computed.whiteSpace};
+                    `;
+                }
+
+                const originalChildren = original.children;
+                const clonedChildren = cloned.children;
+                for (let i = 0; i < originalChildren.length; i++) {
+                    if (clonedChildren[i]) {
+                        applyStyles(originalChildren[i], clonedChildren[i]);
+                    }
+                }
+            };
+
+            applyStyles(resultRef.current, clone);
+
+            // 4. 스타일 적용 후 불필요한 요소 제거
+            clone.querySelectorAll('.candle-effect, .result-actions').forEach(el => el.remove());
+
+            // 클론의 기본 스타일 설정
+            clone.style.background = 'transparent';
+            clone.style.padding = '0';
+            clone.style.minHeight = 'auto';
+            clone.style.height = 'auto';
+
+            tempContainer.appendChild(clone);
+
+            // 4. 이미지 로드 대기
+            const images = tempContainer.querySelectorAll('img');
+            await Promise.all(Array.from(images).map(img => {
+                if (img.complete) return Promise.resolve();
+                return new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve;
+                });
+            }));
+
+            // 5. 캡처
+            const canvas = await html2canvas(tempContainer, {
+                backgroundColor: '#0d0d1a',
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                logging: false
+            });
+
+            // 6. 다운로드
+            const link = document.createElement('a');
+            link.download = `tarot-reading-${new Date().toISOString().split('T')[0]}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            // 7. 정리
+            document.body.removeChild(tempContainer);
+        } catch (error) {
+            console.error('이미지 저장 실패:', error);
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
     return (
-        <div className="result-page">
+        <div className="result-page" ref={resultRef}>
             <CandleEffect position="left" size="small" />
             <CandleEffect position="right" size="small" />
 
@@ -222,6 +336,14 @@ export function ResultPage() {
                     onClick={handleShare}
                 >
                     📤 공유하기
+                </button>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={handleSaveAsImage}
+                    disabled={isSaving}
+                >
+                    {isSaving ? '저장 중...' : '🖼️ 이미지 저장'}
                 </button>
 
                 <button
